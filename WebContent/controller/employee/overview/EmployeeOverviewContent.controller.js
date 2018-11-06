@@ -9,6 +9,9 @@ sap.ui.define([
 	return BaseController.extend("kiran.Myapp.controller.employee.overview.EmployeeOverviewContent",{
 		
 		onInit: function(){
+			this.getModel((data)=>{
+				this.getView().setModel(data);
+			});
 			var oRouter = this.getRouter();
 			this._oTable = this.byId("employeesTable");
 			this._oVSD = null; 
@@ -105,7 +108,9 @@ sap.ui.define([
 			}
 			// update list binding
 			oBinding = this._oTable.getBinding("items");
+			if(oFilter){
 			oBinding.filter(oFilter, "Application");
+			}
 		},
 		
 		_applySorter : function (sSortField, sortDescending){

@@ -29,13 +29,10 @@
 		<script>
 				 sap.ui.getCore().attachInit(function () {
 					 sap.ui.require([
-							"kiran/Myapp/localService/mockserver",
 							"sap/m/Shell",
 							"sap/ui/core/ComponentContainer"
-						], function (mockserver, Shell, ComponentContainer) {
-							mockserver.init();
-
-									
+						], function (Shell, ComponentContainer) {
+																
 										new Shell(
 												{   app : new ComponentContainer({ name : "kiran.Myapp",	
 													                                           settings : { id : "walkthrough" }	

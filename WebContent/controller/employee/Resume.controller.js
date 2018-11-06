@@ -18,8 +18,20 @@ sap.ui.define([
 			var oArgs, oView, oQuery;
 			oArgs = oEvent.getParameter("arguments");
 			oView = this.getView();
+			
+			let a = oArgs.employeeId - 1;
+			
+			this.getModel((data)=>{
+				this.getView().setModel(data);
+			
+				let myJson = data.getJSON();
+				var oData = JSON.parse(myJson);
+				
+				let resumeID = oData["Employees"][1]["ResumeID"]
+				
 			oView.bindElement({
-				path : "/Employees(" + oArgs.employeeId + ")",
+//				path : "/Employees(" + oArgs.employeeId + ")",
+				path : "/Employees/" + a,
 				events : {
 					change: this._onBindingChange.bind(this),
 					dataRequested: function (oEvent) {
@@ -30,6 +42,8 @@ sap.ui.define([
 					}
 				}
 			});
+			}
+		);
 			oQuery = oArgs["?query"];
 			if (oQuery && _aValidTabKeys.indexOf(oQuery.tab) > -1){
 				oView.getModel("view").setProperty("/selectedTabKey", oQuery.tab);

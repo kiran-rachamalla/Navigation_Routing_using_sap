@@ -19,7 +19,7 @@
 				selectedKey="{view>/selectedTabKey}">
 				<items>
 					<IconTabFilter id="infoTab" text="{i18n>Info}" key="Info">
-						<Text text="{Information}" />
+						<Text text="{Information}Information" />
 					</IconTabFilter>
 					<IconTabFilter id="projectsTab" text="{i18n>Projects}" key="Projects">
 						<mvc:XMLView viewName="kiran.Myapp.view.employee.ResumeProjects"></mvc:XMLView>
