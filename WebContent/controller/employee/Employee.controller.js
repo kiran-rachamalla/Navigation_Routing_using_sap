@@ -16,19 +16,23 @@ return BaseController.extend("kiran.Myapp.controller.employee.Employee",{
     	oArgs = oEvent.getParameter("arguments");
     	oView = this.getView();
     	
-    	let a = oArgs.employeeId - 1;
-    	
 		this.getModel((data)=>{
 			this.getView().setModel(data);
 			
 			let myJson = data.getJSON();
 			var oData = JSON.parse(myJson);
 			
+//			var filterObj = oData["Employees"].filter(function(e) {
+//				  return e.EmployeeID == 6;
+//				});
+			
 //			oData['Employees']
+			
+			var filterObj = oData["Employees"].findIndex( x => x.EmployeeID == oArgs.employeeId );
 			
 	    	oView.bindElement( {
 				//path: `/Employees(` + oArgs.employeeId + `)` ,
-				path: `/Employees/` +  a,
+				path: `/Employees/` +  filterObj,
 			    event: {
 			    	change: this._onBindChange.bind(this),
 			    	dataRequested:function(oEvent){
