@@ -26,12 +26,11 @@ sap.ui.define([
 			
 				let myJson = data.getJSON();
 				var oData = JSON.parse(myJson);
-				
-				let resumeID = oData["Employees"][1]["ResumeID"]
+								
+				var cuntEmplyID = oData["Employees"].findIndex( x => x.EmployeeID == oArgs.employeeId );
 				
 			oView.bindElement({
-//				path : "/Employees(" + oArgs.employeeId + ")",
-				path : "/Employees/" + a,
+				path : "/Employees/" + cuntEmplyID,
 				events : {
 					change: this._onBindingChange.bind(this),
 					dataRequested: function (oEvent) {
@@ -42,6 +41,14 @@ sap.ui.define([
 					}
 				}
 			});
+			
+			var resumeID = oData["Resumes"].findIndex( x => x.ResumeID == oData["Employees"][cuntEmplyID]["ResumeID"] );
+			
+			var otabs = this.getView().byId("iconTabBar");
+			otabs.bindElement({ path : "/Resumes/" + resumeID });
+			
+			
+			
 			}
 		);
 			oQuery = oArgs["?query"];

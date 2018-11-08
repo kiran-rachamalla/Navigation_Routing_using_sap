@@ -14,12 +14,11 @@
 			<IconTabBar
 				id="iconTabBar"
 				class="sapUiResponsiveContentPadding"
-				binding="{Resume}"
 				select="onTabSelect"
 				selectedKey="{view>/selectedTabKey}">
 				<items>
 					<IconTabFilter id="infoTab" text="{i18n>Info}" key="Info">
-						<Text text="{Information}Information" />
+						<Text text="{Information}" />
 					</IconTabFilter>
 					<IconTabFilter id="projectsTab" text="{i18n>Projects}" key="Projects">
 						<mvc:XMLView viewName="kiran.Myapp.view.employee.ResumeProjects"></mvc:XMLView>
